@@ -1,6 +1,3 @@
 __pycache__
 *.keras
-*.png
-*.jpg
-*.jpeg
 dataset.csv
