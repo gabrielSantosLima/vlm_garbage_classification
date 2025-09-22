@@ -1,10 +1,13 @@
 import cv2 as cv
 import os
 import pandas as pd
-from typing import Literal
+import numpy as np
+import gc
+from typing import Literal, Union
 from tqdm import trange
 
 DatasetType = Literal['local', 'csv']
+DatasetPartition = Literal['train', 'val', 'test']
 
 
 class ClassMapper:
@@ -32,7 +35,8 @@ class Dataset:
                  dataset_mode: DatasetType = "local",
                  class_mapper: ClassMapper = None,
                  shuffle=True,
-                 preload=False):
+                 preload=False,
+                 partition_name: DatasetPartition = None):
         self.dataset_path = dataset_path
         self.dataset_mode = dataset_mode
         self.preload = preload
@@ -42,6 +46,7 @@ class Dataset:
         self.cache = []
         self.class_mapper = class_mapper
         self.shuffle = shuffle
+        self.partition_name = partition_name
         self._load_dataset()
         self.classes = sorted(self.metadata['class_name'].unique())
         self._encode_labels()
@@ -57,6 +62,12 @@ class Dataset:
             assert "image_name" in self.metadata.columns, "column 'image_name' is required."
             assert "class_name" in self.metadata.columns, "column 'class_name' is required."
             assert "image_path" in self.metadata.columns, "column 'image_path' is required."
+            assert "partition_name" in self.metadata.columns, "column 'partition_name' is required."
+            if self.partition_name != None:
+                print(
+                    f"[LOG] Filtered by partition = {self.partition_name}")
+                self.metadata = self.metadata[self.metadata["partition_name"]
+                                              == self.partition_name]
             return
         classes = os.listdir(self.dataset_path)
         self.metadata = {
@@ -99,6 +110,13 @@ class Dataset:
         x = cv.imread(image_path)
         x = cv.cvtColor(x, cv.COLOR_BGR2RGB)
         return x, y, image_name
+
+    def free(self):
+        print("[LOG] Deallocating memory and turning preload off.")
+        del self.cache
+        self.preload = False
+        self.cache = []
+        gc.collect()
 
     def _load_sample(self, index: int):
         sample = self.metadata.iloc[index]

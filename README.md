@@ -8,8 +8,8 @@ Comparing the usage of Visual Language Models (VLM) and Convolutional Neural Net
 
 Tested models:
 | Model Name | Accuracy | Precision | Recall | F1-Score |
-|-------------|----------|-----------|--------|----------|
-| MobileNetV2 | WIP | WIP | WIP | WIP |
+|------------------|----------|-----------|--------|----------|
+| EfficientNetV2B2 | 89.72% | 88.71% | 88.19% | 88.36% |
 | LLM1 | WIP | WIP | WIP | WIP |
 | LLM2 | WIP | WIP | WIP | WIP |
 | LLM3 | WIP | WIP | WIP | WIP |
