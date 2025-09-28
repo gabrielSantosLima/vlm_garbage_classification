@@ -3,3 +3,5 @@ __pycache__
 dataset.csv
 __experiments__
 kaggle.json
+*.png
+*.txt

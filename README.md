@@ -8,11 +8,10 @@ Comparing the usage of Visual Language Models (VLM) and Convolutional Neural Net
 
 Tested models:
 | Model Name | Accuracy | Precision | Recall | F1-Score |
-|------------------|----------|-----------|--------|----------|
-| EfficientNetV2B2 | 89.72% | 88.71% | 88.19% | 88.36% |
-| LLM1 | WIP | WIP | WIP | WIP |
-| LLM2 | WIP | WIP | WIP | WIP |
-| LLM3 | WIP | WIP | WIP | WIP |
+|-------------------------------|----------|-----------|--------|----------|
+| EfficientNetV2B2 | 90.51% | 92.11% | 88.18% | 89.62% |
+| SmolVLM (Zero-Shot Prompting) | WIP | WIP | WIP | WIP |
+| SmolVLM (Few-Shot Prompting) | WIP | WIP | WIP | WIP |
 
 ## Requirements
 
