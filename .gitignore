@@ -1,7 +1,7 @@
 __pycache__
 *.keras
-dataset.csv
 __experiments__
 kaggle.json
 *.png
 *.txt
+*.csv
