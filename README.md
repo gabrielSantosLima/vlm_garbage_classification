@@ -2,8 +2,6 @@
 
 # Using VLMs for Garbage Classification
 
-> :exclamation: This is a work in progress
-
 Comparing the usage of Visual Language Models (VLM) and Convolutional Neural Network to classify garbage images of the dataset ["Garbage Image Dataset"](https://www.kaggle.com/datasets/farzadnekouei/trash-type-image-dataset/) by Farzad Nekouei.
 
 Tested models:
@@ -34,3 +32,4 @@ Tested models:
 - transfomers
 
 > See the complete configuration in [environment.win.yml](./environment.win.yml)
+
